@@ -1,54 +1,106 @@
-# React + TypeScript + Vite
+# ignite-react-desafio-01: Lista de Tarefas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma aplicação simples de lista de tarefas construída com React e TypeScript. Permite aos usuários criar, completar e deletar tarefas.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Adicionar novas tarefas
+- Marcar tarefas como concluídas
+- Deletar tarefas
+- Acompanhar o progresso de conclusão das tarefas
+- Estado vazio para quando não há tarefas
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- TypeScript
+- CSS Modules
+- Vite
+- Phosphor Icons
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Começando
+
+### Pré-requisitos
+
+- Node.js
+- npm ou yarn
+
+### Instalação
+
+1. Clone o repositório:
+
+```bash
+  git clone https://github.com/dornelles08/ignite-react-desafio-01.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Navegue até o diretório do projeto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+  cd ignite-react-desafio-01
 ```
+
+3. Instale as dependências:
+
+```bash
+  npm install
+```
+
+ou
+
+```bash
+  yarn
+```
+
+### Executando a Aplicação
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+  npm run dev
+```
+
+ou
+
+```bash
+  yarn dev
+```
+
+A aplicação estará disponível em http://localhost:5173.
+
+### Estrutura do Projeto
+
+```
+ignite-react-desafio-01/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   ├── logo.svg
+│   │   └── clipboard.svg
+│   ├── components/
+│   │   ├── Header/
+│   │   ├── Task/
+│   │   └── TaskList/
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── styles/
+│       └── global.css
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+### Como Usar
+
+1. Digite uma tarefa no campo de entrada no topo da página
+2. Clique no botão "Criar" ou pressione Enter para adicionar a tarefa
+3. Para marcar uma tarefa como concluída, clique no círculo ao lado da tarefa
+4. Para deletar uma tarefa, clique no ícone de lixeira
+
+## Licença
+
+Este projeto é parte do curso Ignite React da Rocketseat.
+
+## Agradecimentos
+
+**Rocketseat** por fornecer o desafio e o design.
