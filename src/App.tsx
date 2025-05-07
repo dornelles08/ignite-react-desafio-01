@@ -1,35 +1,110 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Form } from "./components/Form/Form";
+import { Header } from "./components/Header/Header";
 
-function App() {
-  const [count, setCount] = useState(0)
+import "./global.css";
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+import { useState } from "react";
+import styles from "./App.module.css";
+import { EmptyList } from "./components/EmptyList/EmptyList";
+import { Task } from "./components/Task/Task";
+
+export interface Task {
+  id: number;
+  content: string;
+  isCompleted: boolean;
 }
 
-export default App
+function App() {
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      content: "Estudar React",
+      isCompleted: false,
+    },
+    {
+      id: 2,
+      content: "Estudar TypeScript",
+      isCompleted: false,
+    },
+    {
+      id: 3,
+      content: "Estudar JavaScript",
+      isCompleted: false,
+    },
+  ]);
+
+  function handleCreateNewTask(task: string) {
+    setTasks([
+      ...tasks,
+      {
+        id: tasks.length + 1,
+        content: task,
+        isCompleted: false,
+      },
+    ]);
+  }
+
+  function handleDeleteTask(id: number) {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
+  }
+
+  function handleToggleTask(id: number) {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      }
+      return task;
+    });
+
+    setTasks(newTasks);
+  }
+
+  return (
+    <div className={styles.app}>
+      <Header />
+
+      <main className={styles.container}>
+        <Form handleCreateNewTask={handleCreateNewTask} />
+
+        <div className={styles.tasks}>
+          <div className={styles.info}>
+            <span className={styles.created}>
+              Tarefas criadas <strong>{tasks.length}</strong>
+            </span>
+            <span className={styles.done}>
+              Concluídas{" "}
+              <strong>
+                {tasks.filter((t) => t.isCompleted).length} de {tasks.length}
+              </strong>
+            </span>
+          </div>
+
+          <div className={styles.tasksList}>
+            {tasks.length ? (
+              <ul>
+                {tasks.map((task) => {
+                  return (
+                    <Task
+                      key={task.id}
+                      task={task}
+                      onDeleteTask={handleDeleteTask}
+                      onToggleTask={handleToggleTask}
+                    />
+                  );
+                })}
+              </ul>
+            ) : (
+              <EmptyList />
+            )}
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default App;

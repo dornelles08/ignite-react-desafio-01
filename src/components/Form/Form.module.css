@@ -1,0 +1,52 @@
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: calc(0px - 1.5rem - 6px);
+
+  margin-bo: 4rem;
+}
+
+.form input {
+  width: 100%;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  height: 3.25rem;
+  width: 39.875rem;
+
+  background-color: var(--gray-500);
+}
+
+.form input:focus {
+  outline: 2px solid var(--purple-dark);
+}
+
+.form button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--blue-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-size: 0.875rem;
+  height: 3.25rem;
+  width: 5.625rem;
+}
+
+.form button:hover {
+  background-color: var(--blue);
+}
